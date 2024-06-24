@@ -1,8 +1,9 @@
 import { createContext } from "react";
-const CartContext = createContext({
-    cart : {},
-    incrementCart : () => {},
-    DecrementCart : () => {},
 
+const CartContext = createContext({
+    cart: {},
+    increaseQuantity: () => { },
+    decreaseQuantity: () => {}
 })
+
 export default CartContext;

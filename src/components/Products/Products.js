@@ -1,8 +1,9 @@
 import ProductCard from "../ProductCard/ProductCard";
 import Effect from "../Effect/Effect";
+import React from "react";
 import { useState, useEffect } from "react";
 import useWindowSize from "../../hooks/useWindowSize";
-function Products({ cart, incrementcart, DecrementCart}) {
+function Products() {
     // const products = [
     //       {
     //         id: 1,
@@ -38,10 +39,10 @@ function Products({ cart, incrementcart, DecrementCart}) {
   // let products = [];
 
   let [products, setProducts] = useState([]);
-
+  console.log("products")
   console.log(useWindowSize());
   useEffect(() => {
-    fetch("https://api.escuelajs.co/api/v1/products").then(
+    fetch("https://run.mocky.io/v3/0912a49d-ab8c-4aa2-9363-d1d21fd3f66a").then(
       (response) => {
         return response.json();
       }
@@ -57,7 +58,7 @@ function Products({ cart, incrementcart, DecrementCart}) {
           <div><Effect /></div>
             {
                 products.map(function (item, index) {
-                  return (<ProductCard key={index}  product ={item} cart={cart} incrementCart={incrementcart} DecrementCart={ DecrementCart}  />)
+                  return (<ProductCard key={index}  product={item} />)
                 })
             }
         </div>
@@ -65,7 +66,7 @@ function Products({ cart, incrementcart, DecrementCart}) {
 }
 export let a = 10;
 export let b = 20;
-export default Products;
+export default React.memo(Products);
 // Javascript XML 
 
 //ProductCard(title)
