@@ -1,3 +1,26 @@
 .product-card {
     border: 1px solid red;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    width: 240px;
+}
+/* ProductCard.css */
+.card-content {
+    padding: 2px 16px;
+}
+
+.card-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.card-price {
+    color: grey;
+    font-size: 22px;
+}
+
+.img-logo{
+    height: 150px;
+    width: 100px;
 }

@@ -1,0 +1,23 @@
+.categories-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .category-item {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px 0;
+    width: 80%;
+    text-align: center;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+  }
+  
+  .category-item:hover {
+    background-color: #e0e0e0;
+  }
+  

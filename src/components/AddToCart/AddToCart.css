@@ -1,0 +1,18 @@
+/* src/components/AddToCart/AddToCart.css */
+.add-to-cart-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-to-cart-container button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: none;
+
+}
+
+.quantity-display {
+    min-width: 20px;
+    text-align: center;
+}

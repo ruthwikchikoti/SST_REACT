@@ -8,7 +8,7 @@ function ProductCard({ product }) {
   let pRef = useRef(0);
   let iRef = useRef(0);
   let oRef = useRef(0);
-  let [inputV, setInputV] = useState('Class');
+  let [inputV, setInputV] = useState('');
   console.log("pc", product.id)
 
   // setInput(value);
@@ -34,7 +34,7 @@ function ProductCard({ product }) {
     <div className="product-card">
       <p onClick={printTitle}> {product.title}</p>
       <p ref={pRef}> {product.price.value}</p>
-      <img src={logo1} />
+      <img   className='img-logo' src={logo1} />
       <input type="text" onChange={displayOutput} ref={iRef} value={inputV} />
       <p ref={oRef}>Over here the output would arrive - {inputV}</p>
       <ReduxAddToCart product={product} />
