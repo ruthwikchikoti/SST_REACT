@@ -1,27 +1,22 @@
-import React, { useEffect, useState } from "react";
-import "./Categories.css";
+import { useEffect,useState } from "react";
+import { loadCategories } from "../../Store/Categories";
+import { useDispatch } from "react-redux";
 
 function Categories() {
   const [categories, setCategories] = useState([]);
-
+  const dispatch = useDispatch();
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products/categories")
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-        setCategories(res);
-      });
-  }, []); 
-
+    dispatch(loadCategories());
+  }, []);
   return (
-    <div className="categories-container">
-      {categories.map((category, index) => (
-        <div key={index} className="category-item">
-          <p>{category}</p>
-        </div>
-      ))}
+   <div>
+    {
+      categories.map((item)=>{
+        return(
+          <div key={item.id}>{item.name}</div>
+        )
+      })
+    }
     </div>
   );
 }
-
-export default Categories;
