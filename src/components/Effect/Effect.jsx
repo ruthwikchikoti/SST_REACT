@@ -32,7 +32,3 @@ function Effect() {
 
 export default Effect;
 
-
-// Empty dependency array = only once mounting
-// No dependency array = Mounting  + Rerendering
-// With state variable  only on change of the state variable + mounting

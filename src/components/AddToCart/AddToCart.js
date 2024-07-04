@@ -10,7 +10,7 @@ function AddToCart({ product }) {
     function decrease() {
         decreaseQuantity(product);
     }
-    const quantity = cart[product.id] ? cart[product.id].quantity : 0;
+    let quantity = cart[product.title] ? cart[product.title].quantity : 0;
     if (quantity === 0) {
         return (
             <div className="add-to-cart-container">
@@ -31,14 +31,3 @@ function AddToCart({ product }) {
 
 export default AddToCart;
 
-
-// array of object 
-// object of object 
-
-//[{id: 1, quantity: 10}, {id: 2, quantity: 10}, {id: 3, quantity: 10}, {id: 4, quantity: 10}]
-// cart = 
-// {id:{id: 1, quantity: 10}, id:{id: 2, quantity: 10}, id:{id: 3, quantity: 10}, id:{id: 4, quantity: 10}}
-//cart["3"]
-
-// Object.value(obj);
-// Object.keys(obj);

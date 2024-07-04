@@ -1,55 +1,47 @@
-import { act } from "react";
-import { createStore } from "redux";
-import { omit } from "lodash";
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import {thunk} from "redux-thunk";
+import rootReducer from "./Store/Cart.js";
+
 const ADD_TO_CART = "ADD_TO_CART";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+
 export function addToCart(product) {
   return {
     type: ADD_TO_CART,
     payload: product
-  }
+  };
 }
+
 export function removeFromCart(product) {
   return {
     type: REMOVE_FROM_CART,
     payload: product
-  }
-} 
-function cartReducer(state= { items: {}}, action) {
+  };
+}
+
+function cartReducer(state = { items: {} }, action) {
   switch (action.type) {
     case ADD_TO_CART: {
       const product = action.payload;
-      if (state.items[product.id]) {
-        return {
-          ...state,
-          items: {
-            ...state.items,
-            [product.id]: {
-              ...state.items[product.id],
-              quantity: state.items[product.id].quantity + 1
-            }
+      return {
+        ...state,
+        items: {
+          ...state.items,
+          [product.id]: {
+            ...state.items[product.id],
+            quantity: state.items[product.id] ? state.items[product.id].quantity + 1 : 1
           }
         }
-      } else {
-        return {
-          ...state,
-          items: {
-            ...state.items,
-            [product.id]: {
-              ...product,
-              quantity: 1
-            }
-          }
-        }
-      }
+      };
     }
     case REMOVE_FROM_CART: {
       const product = action.payload;
       if (state.items[product.id].quantity <= 1) {
+        const { [product.id]: removedItem, ...restItems } = state.items;
         return {
           ...state,
-          items: omit(state.items, [product.id])
-        }
+          items: restItems
+        };
       } else {
         return {
           ...state,
@@ -60,25 +52,22 @@ function cartReducer(state= { items: {}}, action) {
               quantity: state.items[product.id].quantity - 1
             }
           }
-        }
+        };
       }
-
     }
     default:
       return state;
   }
 }
 
+const combinedReducers = combineReducers({
+  cart: cartReducer,
+  root: rootReducer,
+});
 
-const store = createStore(cartReducer);
+const store = createStore(
+  combinedReducers,
+  applyMiddleware(thunk)
+);
 
 export default store;
-
-
-// action is an object 
-
-// type
-// payload
-//state = {items: {1:{id: 1, quantity: 11}, 2:{id: 2, quantity: 10}, 3:{id: 3, quantity: 10}, 4:{id: 4, quantity: 10}}} 
-
-// ...state, ...product[1]

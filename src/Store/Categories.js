@@ -1,13 +1,18 @@
 import Categories from "../components/Categories/Categories";
-
 export function loadCategories() {
   return function (dispatch) {
     fetch("https://fakestoreapi.com/products/categories")
-      .then((res) => res.json())
+      .then(response => response.json())
       .then((res) => {
         dispatch({
           type: "LOAD_CATEGORIES",
           payload: res,
+        });
+      })
+      .catch(error => {
+        dispatch({
+          type: "LOAD_CATEGORIES_ERROR",
+          error,
         });
       });
   };

@@ -75,10 +75,3 @@ const store = createStore(cartReducer);
 export default store;
 
 
-// action is an object 
-
-// type
-// payload
-//state = {items: {1:{id: 1, quantity: 11}, 2:{id: 2, quantity: 10}, 3:{id: 3, quantity: 10}, 4:{id: 4, quantity: 10}}} 
-
-// ...state, ...product[1]  
